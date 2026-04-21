@@ -5,4 +5,3 @@ dist/
 .env
 .vitest-cache/
 coverage/
-dist/
