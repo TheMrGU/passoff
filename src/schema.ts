@@ -1,3 +1,4 @@
+export const SCHEMA_SQL = `
 CREATE TABLE IF NOT EXISTS handoffs (
   id              TEXT PRIMARY KEY,
   project         TEXT NOT NULL,
@@ -46,3 +47,4 @@ CREATE TRIGGER IF NOT EXISTS handoffs_au AFTER UPDATE ON handoffs BEGIN
   INSERT INTO handoffs_fts(rowid, id, title, content, tags)
   VALUES (new.rowid, new.id, new.title, new.content, new.tags);
 END;
+`;

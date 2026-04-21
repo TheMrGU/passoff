@@ -1,10 +1,8 @@
 import Database from 'better-sqlite3';
-import { readFileSync, mkdirSync } from 'node:fs';
+import { mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { homedir } from 'node:os';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { SCHEMA_SQL } from './schema.js';
 
 export function resolveDbPath(): string {
   if (process.env.PASSOFF_DB_PATH) return process.env.PASSOFF_DB_PATH;
@@ -24,7 +22,5 @@ export function openDb(path?: string): Database.Database {
 }
 
 export function runMigrations(db: Database.Database): void {
-  const schemaPath = join(__dirname, 'schema.sql');
-  const schema = readFileSync(schemaPath, 'utf-8');
-  db.exec(schema);
+  db.exec(SCHEMA_SQL);
 }
