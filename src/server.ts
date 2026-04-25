@@ -13,10 +13,17 @@ import { UNKNOWN_CLIENT } from './lib/client-info.js';
 
 const VERSION = '0.1.0';
 
-function ok<T>(data: T) {
+export function ok<T>(data: T) {
+  // MCP requires `structuredContent` to be a JSON object (record), not an array
+  // or scalar. Wrap non-objects in `{ items: ... }` so strict clients don't
+  // reject the tool result.
+  const structured =
+    data !== null && typeof data === 'object' && !Array.isArray(data)
+      ? (data as any)
+      : { items: data };
   return {
     content: [{ type: 'text' as const, text: JSON.stringify(data, null, 2) }],
-    structuredContent: data as any,
+    structuredContent: structured,
   };
 }
 
@@ -67,7 +74,7 @@ export function buildServer(db: Database.Database): McpServer {
     'passoff_load',
     {
       description:
-        'Load a previously created handoff. Use when the user asks to load a handoff, pick up where another AI left off, or starts a session by referencing prior context. Pass `latest: true` to grab the most recent open handoff in this project, or `id` for a specific one.',
+        'Load a previously created handoff. Use when the user asks to load a handoff, pick up where another AI left off, or starts a session by referencing prior context. Pass `latest: true` to grab the most recent active (non-archived) handoff, or `id` for a specific one. Calling with `latest: true` repeatedly returns the same handoff until it is archived, so a session can resume cleanly after a restart.',
       inputSchema: {
         id: z.string().optional(),
         latest: z.boolean().optional(),

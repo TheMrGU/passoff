@@ -8,6 +8,8 @@ import { cliArchive } from './cli/archive.js';
 import { cliDelete } from './cli/delete.js';
 import { cliClear } from './cli/clear.js';
 import { cliDoctor } from './cli/doctor.js';
+import { cliInstall } from './cli/install.js';
+import { cliUninstall } from './cli/uninstall.js';
 
 const program = new Command();
 
@@ -68,5 +70,21 @@ program
   .command('doctor')
   .description('Print diagnostic info: DB path, version, row counts, MCP config hints')
   .action(() => cliDoctor());
+
+program
+  .command('install')
+  .description('Install passoff command templates for Claude Code, Cursor, and/or Codex')
+  .option('-c, --client <name>', 'claude | cursor | codex | all', 'all')
+  .option('-s, --scope <scope>', 'user | project', 'user')
+  .option('-p, --project <dir>', 'project directory (for --scope project)')
+  .action((opts: any) => cliInstall(opts));
+
+program
+  .command('uninstall')
+  .description('Remove passoff command templates installed by passoff install')
+  .option('-c, --client <name>', 'claude | cursor | codex | all', 'all')
+  .option('-s, --scope <scope>', 'user | project', 'user')
+  .option('-p, --project <dir>', 'project directory (for --scope project)')
+  .action((opts: any) => cliUninstall(opts));
 
 await program.parseAsync(process.argv);

@@ -5,15 +5,19 @@
   "bin": { "passoff": "./dist/index.js" },
   "main": "./dist/index.js",
   "type": "module",
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": ["dist", "commands", "README.md", "LICENSE"],
   "keywords": ["mcp", "claude", "cursor", "codex", "handoff", "context", "ai", "agent"],
   "author": "Gavin Goodyear",
+  "homepage": "https://github.com/TheMrGu/passoff#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/TheMrGu/passoff.git" },
+  "bugs": { "url": "https://github.com/TheMrGu/passoff/issues" },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "setup": "node scripts/setup.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "latest",

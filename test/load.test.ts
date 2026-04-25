@@ -23,10 +23,27 @@ describe('loadHandoff', () => {
     expect(h.id).toBe(second.id);
   });
 
-  it('errors helpfully when no open handoffs', () => {
+  it('errors helpfully when no active handoffs', () => {
     const db = memDb();
     expect(() => loadHandoff(db, { latest: true, project: 'empty' }, cursor)).toThrow(
-      /No open handoffs/,
+      /No active handoffs/,
+    );
+  });
+
+  it('latest re-loads the same handoff across sessions until archived', () => {
+    const db = memDb();
+    const c = createHandoff(db, { title: 't', content: 'c', project: 'p' }, claudeCode);
+    // First load flips status to 'loaded'
+    const first = loadHandoff(db, { latest: true, project: 'p' }, cursor);
+    expect(first.id).toBe(c.id);
+    expect(first.status).toBe('loaded');
+    // Second load still returns the same handoff (not "no open handoffs")
+    const second = loadHandoff(db, { latest: true, project: 'p' }, cursor);
+    expect(second.id).toBe(c.id);
+    // Archiving excludes it from latest
+    db.prepare("UPDATE handoffs SET status = 'archived' WHERE id = ?").run(c.id);
+    expect(() => loadHandoff(db, { latest: true, project: 'p' }, cursor)).toThrow(
+      /No active handoffs/,
     );
   });
 

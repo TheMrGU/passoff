@@ -37,9 +37,33 @@ export function cliDoctor(): void {
     db.close();
   }
 
+  const entry = join(__dirname, '..', 'index.js');
+  const entryJson = JSON.stringify(entry);
+
   console.log('');
-  console.log('MCP client config hints:');
-  console.log('  Claude Code:  claude mcp add passoff -- npx -y passoff serve');
-  console.log('  Cursor (.cursor/mcp.json):');
-  console.log('    { "mcpServers": { "passoff": { "command": "npx", "args": ["-y", "passoff", "serve"] } } }');
+  console.log('MCP client config — copy/paste to wire any AI to this install:');
+  console.log('');
+  console.log('  Claude Code (one-shot):');
+  console.log(`    claude mcp add passoff -- node ${entry} serve`);
+  console.log('');
+  console.log('  Cursor  (.cursor/mcp.json  or  ~/.cursor/mcp.json):');
+  console.log('    {');
+  console.log('      "mcpServers": {');
+  console.log('        "passoff": {');
+  console.log('          "command": "node",');
+  console.log(`          "args": [${entryJson}, "serve"]`);
+  console.log('        }');
+  console.log('      }');
+  console.log('    }');
+  console.log('');
+  console.log('  Codex  (~/.codex/config.toml):');
+  console.log('    [mcp_servers.passoff]');
+  console.log('    command = "node"');
+  console.log(`    args = [${entryJson}, "serve"]`);
+  console.log('    # optional Codex slash commands: passoff install --client codex');
+  console.log('');
+  console.log('  Windsurf / any other MCP client:  same command/args pair as above.');
+  console.log('');
+  console.log('After wiring a client, restart it, then run:  passoff install');
+  console.log('to install Claude/Cursor command files and Codex /passoff:create, /passoff:load, /passoff:list, /passoff:search plugin commands.');
 }
