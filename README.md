@@ -1,4 +1,4 @@
-# passoff
+# Passoff
 
 > Pass the baton between AI coding agents — without losing the thread.
 
