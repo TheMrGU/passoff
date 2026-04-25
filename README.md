@@ -2,7 +2,7 @@
 
 > Pass the baton between AI coding agents — without losing the thread.
 
-[![CI](https://github.com/TheMrGu/passoff/actions/workflows/ci.yml/badge.svg)](https://github.com/TheMrGu/passoff/actions/workflows/ci.yml)
+[![CI](https://github.com/TheMrGU/passoff/actions/workflows/ci.yml/badge.svg)](https://github.com/TheMrGU/passoff/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org)
 [![Status: alpha](https://img.shields.io/badge/status-alpha-orange.svg)](#status)
@@ -65,7 +65,7 @@ Requires **Node 20+**.
 Or run from source:
 
 ```bash
-git clone https://github.com/TheMrGu/passoff && cd passoff
+git clone https://github.com/TheMrGU/passoff && cd passoff
 npm install && npm run build
 node dist/index.js --help
 ```

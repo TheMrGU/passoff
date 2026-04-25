@@ -5,7 +5,7 @@ Thanks for opening Passoff. Pull requests, bug reports, and design discussions a
 ## Getting set up
 
 ```bash
-git clone https://github.com/TheMrGu/passoff
+git clone https://github.com/TheMrGU/passoff
 cd passoff
 npm install
 npm run build

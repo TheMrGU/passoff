@@ -8,9 +8,9 @@
   "files": ["dist", "commands", "README.md", "LICENSE"],
   "keywords": ["mcp", "claude", "cursor", "codex", "handoff", "context", "ai", "agent"],
   "author": "Gavin Goodyear",
-  "homepage": "https://github.com/TheMrGu/passoff#readme",
-  "repository": { "type": "git", "url": "git+https://github.com/TheMrGu/passoff.git" },
-  "bugs": { "url": "https://github.com/TheMrGu/passoff/issues" },
+  "homepage": "https://github.com/TheMrGU/passoff#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/TheMrGU/passoff.git" },
+  "bugs": { "url": "https://github.com/TheMrGU/passoff/issues" },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",

@@ -4,10 +4,10 @@
   "description": "Create, load, list, and search passoff handoffs from Codex via slash commands.",
   "author": {
     "name": "Gavin Goodyear",
-    "url": "https://github.com/TheMrGu"
+    "url": "https://github.com/TheMrGU"
   },
-  "homepage": "https://github.com/TheMrGu/passoff",
-  "repository": "https://github.com/TheMrGu/passoff",
+  "homepage": "https://github.com/TheMrGU/passoff",
+  "repository": "https://github.com/TheMrGU/passoff",
   "license": "MIT",
   "keywords": ["passoff", "mcp", "handoff", "codex"],
   "interface": {
@@ -17,9 +17,9 @@
     "developerName": "Gavin Goodyear",
     "category": "Productivity",
     "capabilities": ["Interactive", "Write"],
-    "websiteURL": "https://github.com/TheMrGu/passoff",
-    "privacyPolicyURL": "https://github.com/TheMrGu/passoff",
-    "termsOfServiceURL": "https://github.com/TheMrGu/passoff",
+    "websiteURL": "https://github.com/TheMrGU/passoff",
+    "privacyPolicyURL": "https://github.com/TheMrGU/passoff",
+    "termsOfServiceURL": "https://github.com/TheMrGU/passoff",
     "defaultPrompt": [
       "Create a handoff for the next AI",
       "Load the latest passoff for this project",
